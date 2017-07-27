@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>quiz</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .container {
+            background-color: beige;
+        }
+        
+        .header {
+            text-align: center;
+            line-height: 10px;
+        }
+        
+        .jumbotron {
+            background-color: antiquewhite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Online Test Series</h1>
+            <p>Note:the question paper consists of 25 questions.</p>
+        </div>
+        <div class="jumbotron">
+            <form name="qzform" onsubmit="return submitAns()">
+                <h3>QNo 1 C is the Ovjective programming language</h3>
+                <input type="radio" name="q1" value="a" id="q1">a) True</input><br>
+                <input type="radio" name="q1" value="b" id="q1">b) false</input><br>
+                <h3>QNo 2 int size is</h3>
+                <input type="radio" name="q2" value="a" id="q2">a) 2</input><br>
+                <input type="radio" name="q2" value="b" id="q2">b) 3</input><br>
+                <input type="radio" name="q2" value="c" id="q2">c) 6</input><br>
+                <input type="radio" name="q2" value="d" id="q2">d) 5</input><br>
+                <br>
+
+                <input type="submit" value="Submit" />
+            </form>
+        </div>
+        <div class="res">
+
+        </div>
+    </div>
+    <script>
+        function submitAns() {
+
+            var tot = 2;
+            var score = 0;
+            var q1 = document.forms["qzform"]["q1"].value;
+            var q2 = document.forms["qzform"]["q2"].value;
+            for (i = 1; i <= 2; i++) {
+                if (eval('q' + i) == null || eval('q' + i) == "") {
+                    alert("you are missing qno." + i);
+                    return false;
+                }
+            }
+            var ans = ["a", "b"];
+            for (i = 1; i <= 2; i++) {
+                if (eval('q' + i) == ans[i - 1]) {
+                    score = score + 1;
+                }
+            }
+            var res = document.getElementById("res");
+            if (score == tot) {
+                res.innerHTML = "<h1>You Scored " + score + " out of " + tot + "</h1>";
+
+                return false;
+            }
+
+            return false;
+
+
+        }
+    </script>
+</body>
+
+</html>
